@@ -14,6 +14,7 @@ mod:SetEncounterID(mod:Classic() and 755 or 1134)
 
 local vaporCount = 1
 local surgeCount = 1
+local interruptCount = 0
 
 --------------------------------------------------------------------------------
 -- Localization
@@ -83,6 +84,7 @@ end
 function mod:OnEngage()
 	vaporCount = 1
 	surgeCount = 1
+	interruptCount = 0
 	self:Berserk(600)
 	self:Bar(62662, 60, L["surge_bar"]:format(surgeCount))
 end
@@ -141,7 +143,14 @@ function mod:MarkOfTheFacelessRemoved(args)
 end
 
 function mod:SearingFlames(args)
-	self:MessageOld(args.spellId, "yellow", self:Interrupter() and "warning")
+	self:MessageOld(
+		args.spellId,
+		"yellow",
+		self:Interrupter() and "warning",
+		("Interrupt %d"):format(interruptCount + 1)
+	)
+
+	interruptCount = (interruptCount + 1) % 3
 end
 
 function mod:SurgeOfDarkness(args)
