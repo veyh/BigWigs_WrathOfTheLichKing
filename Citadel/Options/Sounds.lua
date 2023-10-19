@@ -23,6 +23,7 @@ BigWigs:AddSounds("Deathbringer Saurfang", {
 
 BigWigs:AddSounds("Festergut", {
 	[69279] = "alert",
+	[72295] = "alert",
 })
 
 BigWigs:AddSounds("Rotface", {

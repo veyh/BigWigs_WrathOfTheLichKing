@@ -123,7 +123,7 @@ do
 	function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, castId, spellId)
 		if spellId == 72299 and castId ~= prev then
 			prev = castId
-			self:MessageOld(72295, "red", nil, L["ball_message"])
+			self:MessageOld(72295, "red", "alert", L["ball_message"])
 		end
 	end
 end
