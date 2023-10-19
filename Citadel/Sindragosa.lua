@@ -61,7 +61,7 @@ function mod:GetOptions()
 		69766, -- Instability
 		70106, -- Chilled to the Bone
 		70123, -- Blistering Cold
-		{70126, "FLASH"}, -- Frost Beacon
+		{70126, "FLASH", "SAY"}, -- Frost Beacon
 		beaconMarker,
 		"proximity",
 		"berserk",
@@ -129,6 +129,7 @@ do
 		if self:Me(args.destGUID) then
 			self:OpenProximity("proximity", 10)
 			self:Flash(70126)
+			self:Say(70126)
 		end
 		if not scheduled then
 			scheduled = self:ScheduleTimer(baconWarn, 0.2)
