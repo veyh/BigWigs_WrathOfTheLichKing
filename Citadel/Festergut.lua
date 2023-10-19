@@ -7,7 +7,7 @@ if not mod then return end
 mod:RegisterEnableMob(36626)
 -- mod:SetEncounterID(1097)
 -- mod:SetRespawnTime(30)
-mod.toggleOptions = {{69279, "FLASH"}, 69165, 69195, 72219, 69240, 72295, "proximity", "berserk"}
+mod.toggleOptions = {{69279, "FLASH", "SAY"}, 69165, 69195, 72219, 69240, 72295, "proximity", "berserk"}
 mod.optionHeaders = {
 	[69279] = "normal",
 	[72295] = "heroic",
@@ -74,6 +74,7 @@ do
 		sporeTargets[#sporeTargets + 1] = args.destName
 		if self:Me(args.destGUID) then
 			self:Flash(69279)
+			self:Say(69279)
 		end
 		if not scheduled then
 			scheduled = self:ScheduleTimer(sporeWarn, 0.2, args.spellName)
