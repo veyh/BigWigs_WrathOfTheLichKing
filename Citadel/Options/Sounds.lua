@@ -47,6 +47,7 @@ BigWigs:AddSounds("Blood Prince Council", {
 BigWigs:AddSounds("Blood-Queen Lana'thel", {
 	[70877] = "alert",
 	[71772] = "alarm",
+	[71265] = "alert",
 })
 
 BigWigs:AddSounds("Valithria Dreamwalker", {
