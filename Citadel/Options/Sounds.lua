@@ -8,6 +8,7 @@ BigWigs:AddSounds("Lady Deathwhisper", {
 	[70842] = "info",
 	[71001] = "alarm",
 	[71289] = "alert",
+	[70903] = "alert",
 })
 
 BigWigs:AddSounds("Icecrown Gunship Battle", {

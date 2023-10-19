@@ -7,7 +7,7 @@ if not mod then return end
 mod:RegisterEnableMob(36855, 37949, 38010, 37890, 38009, 38135) --Deathwhisper, Cult Adherent, Reanimated Adherent, Cult Fanatic, Reanimated Fanatic, Deformed Fanatic
 -- mod:SetEncounterID(1100)
 -- mod:SetRespawnTime(30)
-mod.toggleOptions = {"adds", 70842, 71204, 71426, 71289, {71001, "FLASH"}, "berserk"}
+mod.toggleOptions = {"adds", 70842, 71204, 71426, 71289, 70903, {71001, "FLASH"}, "berserk"}
 mod.optionHeaders = {
 	adds = CL.phase:format(1),
 	[71204] = CL.phase:format(2),
@@ -57,6 +57,8 @@ function mod:OnBossEnable()
 	self:Log("SPELL_AURA_APPLIED", "Touch", 71204)
 	self:Log("SPELL_AURA_APPLIED_DOSE", "Touch", 71204)
 	self:Log("SPELL_CAST_START", "Deformed", 70900)
+	self:Log("SPELL_CAST_START", "Martyrdom", 70903)
+	self:Log("SPELL_CAST_START", "Martyrdom", 71236)
 	self:Log("SPELL_SUMMON", "Spirit", 71426)
 	self:Death("Win", 36855)
 
@@ -124,6 +126,10 @@ end
 
 function mod:Deformed()
 	self:MessageOld("adds", "orange", nil, L["deformed_fanatic"], 70900)
+end
+
+function mod:Martyrdom()
+	self:MessageOld(70903, "red", "alert", "Dark Martyrdom")
 end
 
 do
