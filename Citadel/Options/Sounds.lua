@@ -48,6 +48,7 @@ BigWigs:AddSounds("Blood-Queen Lana'thel", {
 	[70877] = "alert",
 	[71772] = "alarm",
 	[71265] = "alert",
+	[71340] = "alarm",
 })
 
 BigWigs:AddSounds("Valithria Dreamwalker", {

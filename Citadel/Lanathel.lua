@@ -85,6 +85,7 @@ do
 	function mod:Pact(args)
 		if self:Me(args.destGUID) then
 			self:Flash(71340)
+		  self:PlaySound(71340, "alarm")
 		end
 		pactTargets[#pactTargets + 1] = args.destName
 		if not scheduled then
