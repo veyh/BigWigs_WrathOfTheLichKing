@@ -98,8 +98,9 @@ end
 function mod:Shadows(msg, _, _, _, player)
 	if UnitIsUnit(player, "player") then
 		self:Flash(71265)
+		self:PlaySound(71265, "alert")
 	end
-	self:TargetMessageOld(71265, player, "yellow", "alert", L["shadow_message"])
+	self:TargetMessageOld(71265, player, "yellow", nil, L["shadow_message"])
 	self:Bar(71265, 30, L["shadow_bar"])
 end
 
