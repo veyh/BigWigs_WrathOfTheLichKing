@@ -13,6 +13,7 @@ mod.optionHeaders = {
 	[71204] = CL.phase:format(2),
 	[71289] = "general",
 }
+mod:SetStage(1)
 
 --------------------------------------------------------------------------------
 -- Locals
@@ -73,6 +74,7 @@ local function adds(time)
 end
 
 function mod:OnEngage(diff)
+	self:SetStage(1)
 	self:Berserk(600, true)
 	self:Bar("adds", 7, L["adds_bar"], 70768)
 	if diff > 3 then
@@ -93,6 +95,7 @@ function mod:DnD(args)
 end
 
 function mod:Barrier(args)
+	self:SetStage(2)
 	if not self:Heroic() then
 		self:CancelTimer(handle_Adds)
 		self:StopBar(L["adds_bar"])

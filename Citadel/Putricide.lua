@@ -15,6 +15,7 @@ mod.optionHeaders = {
 	[70911] = "heroic",
 	phase = "general",
 }
+mod:SetStage(1)
 
 --------------------------------------------------------------------------------
 -- Locals
@@ -73,6 +74,7 @@ function mod:OnBossEnable()
 end
 
 function mod:OnEngage()
+	self:SetStage(1)
 	self:Berserk(600)
 	p2, first = nil, nil
 	self:Bar(70351, 25, L["experiment_bar"])
@@ -97,10 +99,12 @@ do
 			mod:Bar(70351, 25, L["experiment_bar"])
 			first = true
 			p2 = true
+			mod:SetStage(2)
 		else
 			mod:MessageOld("phase", "green", nil, CL.phase:format(3), false)
 			first = nil
 			mod:UnregisterEvent("UNIT_HEALTH")
+			mod:SetStage(3)
 		end
 	end
 
@@ -212,7 +216,7 @@ end
 do
 	local oldPlagueBar = ""
 	function mod:UnboundPlague(args)
-		local _, _, _, expirationTime = self:UnitDebuff(args.destName, args.spellName)
+		local _, _, _, expirationTime = self:UnitDebuff(args.destName, args.spellName, 70911)
 		if expirationTime then
 			self:StopBar(70911, oldPlagueBar)
 			oldPlagueBar = args.destName

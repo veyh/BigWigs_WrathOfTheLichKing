@@ -16,6 +16,7 @@ mod.optionHeaders = {
 	[73529] = "heroic",
 	warmup = "general",
 }
+mod:SetStage(1)
 
 --------------------------------------------------------------------------------
 -- Locals
@@ -104,6 +105,7 @@ function mod:Warmup()
 end
 
 function mod:OnEngage()
+	self:SetStage(1)
 	frenzied = {}
 	plagueTicks = {}
 	valkyrs = {}
@@ -204,7 +206,7 @@ end
 do
 	local function scanRaid()
 		for unit in mod:IterateGroup() do
-			local debuffed, _, _, expire = mod:UnitDebuff(unit, mod:SpellName(70337)) -- Necrotic Plague
+			local debuffed, _, _, expire = mod:UnitDebuff(unit, mod:SpellName(70337), 70337, 70338) -- Necrotic Plague, both were on 25N
 			if debuffed and (expire - GetTime()) > 13 then
 				if UnitIsUnit(unit, "player") then
 					mod:Flash(70337)
@@ -316,6 +318,7 @@ end
 
 function mod:RemorselessWinter(args)
 	phase = phase + 1
+	self:SetStage(phase) -- Phase 2, and 4 is transition phases
 	self:StopBar(L["valkyr_bar"])
 	self:StopBar(L["horror_bar"])
 	self:StopBar(70337) -- Necrotic Plague
@@ -331,6 +334,7 @@ end
 
 function mod:Quake(args)
 	phase = phase + 1
+	self:SetStage(phase)
 	self:StopBar(69200) -- Raging Spirit
 	self:MessageOld(72262, "orange", "long", CL["cast"]:format(args.spellName))
 	self:Bar(72762, 37) -- Defile
